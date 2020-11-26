@@ -10,7 +10,7 @@
   ******************************************************************
   history:
   V2.3    26.11.20     switched to LittleFS
-  V2.2    18.08.20     code is now compatible with standard OLED displays
+  V2.11   18.08.20     code is now compatible with standard OLED displays
                        and original code base (default pw length = 32)
   V2.1    18.07.20     added support for ESP8266 based Wifi Kit 8
   (by Pulsar07/           (https://heltec.org/project/wifi-kit-8/)
@@ -24,6 +24,7 @@
                           character (e.g. +) is now supported
                         for specified battery type, voltage is displayed
                         using uncompressed html files makes WEB GUI much faster
+  V2.01   29.01.20      small bug fixes with AVR
   V2.0    26.01.20      Webpage rewritten, no bootstrap framework needed
                         add translation to webpage (en, de)
                         optimized for measuring with landinggears
@@ -116,9 +117,9 @@ File fsUploadFile;              // a File object to temporarily store the receiv
 #include "defaults.h"
 
 struct Model {
-  char name[MAX_MODELNAME_LENGHT + 1] = "";
   float distance[3] = {DISTANCE_X1, DISTANCE_X2, DISTANCE_X3};
 #if defined(ESP8266)
+  char name[MAX_MODELNAME_LENGHT + 1] = "";
   float targetCGmin = 0;
   float targetCGmax = 0;
   uint8_t mechanicsType = 0;
